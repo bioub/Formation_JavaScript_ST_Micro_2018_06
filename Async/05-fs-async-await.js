@@ -4,7 +4,6 @@ const path = require('path');
 const dirPath = path.resolve(__dirname, 'logs');
 const filePath = path.resolve(dirPath, 'app.log');
 
-
 function log(file, msg) {
   const line = `[${(new Date).toISOString()}] ${msg}\n`;
   return fs.appendFile(file, line);
