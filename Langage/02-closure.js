@@ -5,9 +5,15 @@ function externe(msg) {
   // 2/ la référence de la fonction interne soit accessible en dehors
   // valeur de retour, stocker dans une variable globale,
   // stocker dans un objet ou tableaux, ou un callback async
+  
+  // si msg volumineux et pas utilisé par la suite
+  // demander sa suppression en le déréférençant
+  // msg = null;
   function interne() {
     console.log(msg);
   }
+
+
   return interne; // retourne la référence de la fonction
 }
 

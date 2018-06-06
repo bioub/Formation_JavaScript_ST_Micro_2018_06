@@ -21,6 +21,24 @@ const coords = {
   y: 20,
 };
 
+const obj = {
+  number: 0,
+  boolean: false,
+  string: '',
+  array: [],
+  object: {},
+  regex: /[a-b]/,
+};
+
+const json = JSON.stringify(obj);
+console.log(json); // {"number":0,"boolean":false,"string":"","array":[],"object":{},"regex":{}}
+
+// ... reseau ...
+
+const data = JSON.parse(json);
+console.log(data.boolean); // false
+
+
 // ajouter/modifier des clés
 console.log(coords.x); // 10
 coords.z = 30;
@@ -33,10 +51,11 @@ console['log'](coords['z']); // 30
 delete coords.z;
 
 console.log(coords.z); // undefined
+console.log(coords['z']); // undefined
 
 for (let key in coords) {
   console.log(key, typeof key); // x, y
-  console.log(coords[key])
+  console.log(coords[key]); // 10, 20
 }
 
 console.log('coords instanceof Object', coords instanceof Object);
