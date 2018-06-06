@@ -1,3 +1,4 @@
+// 1 - Method Properties
 const random = {
   get: function() {
     return Math.random();
@@ -23,8 +24,11 @@ const random = {
 // Dépendances de fichiers
 const readline = require('readline');
 
-function Jeu(options) {
+// 2 - class
+function Jeu(options) { // 3 - default value : {}
   options = options || {};
+
+  // 4 - destructurer l'objet avec default value
   const min = options.min || 0;
   const max = options.max !== undefined ? options.max : 100;
 
@@ -38,13 +42,16 @@ function Jeu(options) {
 
 Jeu.prototype.jouer = function() {
   if (this._essais.length) {
+    // 5 - template literal
     console.log('Vous avez déjà joué : ' + this._essais.join(' | '));
   }
 
   this._rl.question('Quel est le nombre ? ', (answer) => {
     
+    // 6 - Number.parseInt()
     const entierSaisi = parseInt(answer);
 
+    // 7 - Number.isNaN()
     if (isNaN(entierSaisi)) {
       console.log('Erreur : il faut saisir un nombre');
       return this.jouer();
