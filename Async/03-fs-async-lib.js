@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const async = require('async');
 
 const dirPath = path.resolve(__dirname, 'logs');
 const filePath = path.resolve(dirPath, 'app.log');
@@ -29,30 +30,16 @@ console.timeEnd('Thread idle');
 
 // Callback hell / Pyramid of doom
 function next() {
-  log(filePath, 'Ligne 1', (err) => {
+  async.series([
+    (next) => log(filePath, 'Ligne 1', next),
+    (next) => log(filePath, 'Ligne 2', next),
+    (next) => log(filePath, 'Ligne 3', next),
+    (next) => log(filePath, 'Ligne 4', next),
+    (next) => log(filePath, 'Ligne 5', next),
+  ], (err) => {
     if (err) {
       return console.log(err);
     }
-    log(filePath, 'Ligne 2', (err) => {
-      if (err) {
-        return console.log(err);
-      }
-      log(filePath, 'Ligne 3', (err) => {
-        if (err) {
-          return console.log(err);
-        }
-        log(filePath, 'Ligne 4', (err) => {
-          if (err) {
-            return console.log(err);
-          }
-          log(filePath, 'Ligne 5', (err) => {
-            if (err) {
-              return console.log(err);
-            }
-            console.timeEnd('Logs DONE');
-          });
-        });
-      });
-    });
+    console.timeEnd('Logs DONE');
   });
 }
