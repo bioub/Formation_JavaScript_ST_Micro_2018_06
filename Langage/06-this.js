@@ -28,6 +28,9 @@ hello.apply(contact, ['Toto', 'Titi']);
 hello.call(contact, ...['Toto', 'Titi']);
 
 function sum() {
+  // ES6 (Array.from)
+  // const args = Array.from(arguments);
+  // args.reduce....
   return Array.prototype.reduce.call(arguments, (acc, nb) => acc + nb, 0);
 }
 
