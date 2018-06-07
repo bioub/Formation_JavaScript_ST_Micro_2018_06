@@ -12,7 +12,7 @@
 
     _render() {
       const now = new Date();
-      this._container.innerText = now.toLocaleTimeString();
+      this._container.textContent = now.toLocaleTimeString();
     }
 
     start() {

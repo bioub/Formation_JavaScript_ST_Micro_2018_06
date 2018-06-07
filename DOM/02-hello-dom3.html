@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // Module : une portée créée au niveau d'un fichier/script
+    // Module IIFE : Immediately Invoked Function Expression
+    (function () {
+      'use strict';
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var inputElt = document.getElementById('input');
+        var spanElt = document.getElementById('output');
+
+        function onKeyup() {
+          spanElt.textContent = inputElt.value;
+        }
+
+        inputElt.addEventListener('keyup', onKeyup);
+      });
+      
+    }());
+  </script>
+</head>
+<body>
+  <div>
+    Prénom : <input id="input">
+  </div>
+  <p>
+    Bonjour <span id="output"></span> !
+  </p>
+</body>
+</html>
