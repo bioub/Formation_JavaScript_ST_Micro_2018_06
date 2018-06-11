@@ -34,7 +34,7 @@ async function buildJS() {
     content = UglifyJS.minify(content).code;
   }
 
-  fs.appendFile(appJsDistPath, content);
+  await fs.appendFile(appJsDistPath, content);
 
   console.log('buildJS done');
 }

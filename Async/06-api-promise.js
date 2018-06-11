@@ -1,7 +1,7 @@
 function timeout(delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(delay / 1000);
+      resolve(delay / 1000); // 1 seul param pour pouvoir écrire await
     }, delay);
   });
 }
@@ -21,6 +21,13 @@ timeout(1000)
     console.log(`${sec}s`);
   });
 
+(async () => {
+  const sec = await timeout(1000);
+  console.log(`${sec}s`);
+  const sec = await timeout(2000);
+  console.log(`${sec}s`);
+})();
+
 
 const nbs = [2, 3, 4];
 
@@ -32,7 +39,8 @@ findByIndex(1)
   .then((val) => {
     console.log(val);
   });
-  console.log('Fin');
+
+console.log('Fin');
 
 
 function fakeAjax() {
